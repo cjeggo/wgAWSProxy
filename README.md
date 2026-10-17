@@ -20,7 +20,7 @@ terraform apply
 Then, locally:
 
 ```
-terraform output -raw thor_wg_config | sudo tee /etc/wireguard/wg0.conf
+terraform output -raw wg_config | sudo tee /etc/wireguard/wg0.conf
 sudo wg-quick up wg0
 curl ifconfig.me   # should now show the jump VM's IP, not thor's
 ```
