@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars (gitignored) and fill in real values.
+# Never commit terraform.tfvars - it will hold real AWS credentials and your real IP.
+
+aws_access_key      = "AKIA..."
+aws_secret_key      = "..."
+aws_region          = "eu-west-1"
+allowed_admin_cidr  = "203.0.113.10/32" # your public IP, /32
+ssh_public_key      = "ssh-ed25519 AAAA... you@somewhere"
