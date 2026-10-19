@@ -25,7 +25,7 @@ variable "instance_type" {
 }
 
 variable "allowed_admin_cidr" {
-  description = "CIDR allowed to reach SSH (22) and the WireGuard port on the jump VM - your home/thor's public IP, /32. Placeholder - real IPs do not belong in version control."
+  description = "CIDR allowed to reach SSH (22) and the WireGuard port on the jump VM - your local's public IP, /32. Placeholder - real IPs do not belong in version control."
   type        = string
   default     = "REPLACE_WITH_YOUR_IP/32"
 }

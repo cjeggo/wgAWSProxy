@@ -4,7 +4,7 @@ output "proxy_public_ip" {
 }
 
 output "wg_server_public_key" {
-  description = "Server's WireGuard public key - needed for thor's own [Peer] block."
+  description = "Server's WireGuard public key - needed for locals's own [Peer] block."
   value       = trimspace(data.local_file.server_public_key.content)
 }
 
@@ -15,7 +15,7 @@ output "wg_client_private_key" {
 }
 
 output "wg_config" {
-  description = "Ready-to-use wg0.conf content local side of the tunnel. Sensitive since it embeds the private key. PostUp/PostDown disable IPv6 system-wide while the tunnel is up (fail-closed kill switch) since AllowedIPs = 0.0.0.0/0 only covers IPv4 - without this, any AAAA-resolving target would leak thor's real IPv6 address around the tunnel entirely."
+  description = "Ready-to-use wg0.conf content local side of the tunnel. Sensitive since it embeds the private key. PostUp/PostDown disable IPv6 system-wide while the tunnel is up (fail-closed kill switch) since AllowedIPs = 0.0.0.0/0 only covers IPv4 - without this, any AAAA-resolving target would leak local's real IPv6 address around the tunnel entirely."
   sensitive   = true
   value       = <<-EOT
     [Interface]

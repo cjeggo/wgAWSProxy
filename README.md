@@ -1,7 +1,7 @@
 # aws_proxy
 
 Stands up a disposable WireGuard relay in a personal AWS account, so scan/exploit
-traffic egresses from the jump VM's IP instead of thor's. Personal AWS account
+traffic egresses from the jump VM's IP instead of the local machine. Personal AWS account
 only.
 
 State is local (`terraform.tfstate` in this directory) - no remote backend, no
@@ -32,7 +32,7 @@ addresses breaks); narrow it only for a quick, scoped test against a fixed IP.
 
 **IPv6 kill switch, baked into the generated config's PostUp/PostDown:**
 `AllowedIPs = 0.0.0.0/0` only covers IPv4. Without a corresponding IPv6
-control, any AAAA-resolving target would leak thor's real IPv6 address
+control, any AAAA-resolving target would leak a real IPv6 address
 straight around the tunnel - the WireGuard route simply wouldn't apply to
 it. `PostUp` disables IPv6 system-wide (`sysctl
 net.ipv6.conf.all.disable_ipv6=1`) the moment the tunnel comes up; `PostDown`
@@ -41,8 +41,7 @@ blocked outright rather than silently leaking.
 
 **While the tunnel is up, everything routes through the jump VM's
 IP, not just engagement traffic** - unrelated SSH sessions, `git pull`,
-package updates, all of it. Don't use thor for anything else during a live
-engagement window.
+package updates, all of it.
 
 Tear down after use:
 
